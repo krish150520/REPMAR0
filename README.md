@@ -20,7 +20,7 @@ It detects body movements through a webcam and tracks workout reps in real time.
 
 Clone the repository:
 
-git clone https://github.com/yourusername/repmaro.git
+git clone https://github.com/krish150520/REPMAR0.git
 
 Install dependencies:
 
