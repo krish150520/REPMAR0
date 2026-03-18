@@ -12,12 +12,12 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.selected_card=None
         self.selected_exercise=None
-        # self.setWindowFlag(Qt.FramelessWindowHint)
         self.current_size = (1280, 720)
         self.resize(1280,720)
         central=QWidget()
         self.setCentralWidget(central)
         main_layout=QVBoxLayout(central)
+
         main_layout.setContentsMargins(0,0,0,0)
         main_layout.setSpacing(0)
         main_layout.addWidget(self.create_titlebar())
@@ -102,7 +102,7 @@ class MainWindow(QMainWindow):
        self.profile_name_lbl.mousePressEvent = lambda e: self.open_profile_popup()
    
        # level badge
-       self.level_badge = QLabel("⚡ LEVEL 12 — WARRIOR")
+       self.level_badge = QLabel("⚡ LEVEL 1 — BEGINER")
        self.level_badge.setAlignment(Qt.AlignCenter)
        self.level_badge.setStyleSheet("""
            color: #c8ff00;
@@ -135,6 +135,8 @@ class MainWindow(QMainWindow):
     #    screen buttons
        for icon, label in [("🏠","Home"),("📅","Records"),("📊","Progress"),("⚙️","Settings")]:
            btn = QPushButton(f"  {icon}  {label}")
+           btn.setCursor(Qt.PointingHandCursor)
+
            if label == "Records":
                btn.clicked.connect(self.open_records)
            elif label == "Progress":
@@ -160,6 +162,8 @@ class MainWindow(QMainWindow):
 
     
        exit_btn = QPushButton("  🚪  Exit")
+       exit_btn.setCursor(Qt.PointingHandCursor)
+
        exit_btn.setStyleSheet("""
            QPushButton {
                text-align: left;
@@ -196,6 +200,7 @@ class MainWindow(QMainWindow):
              card = QFrame()
              card.setFixedWidth(150)
              card.setCursor(Qt.PointingHandCursor)
+             
              card.setStyleSheet("""
                  QFrame {
                      background: #1a1a26;
@@ -259,6 +264,8 @@ class MainWindow(QMainWindow):
         start_btn = QPushButton("▶  START WORKOUT")
         start_btn.setObjectName("startBtn")
         start_btn.setFixedHeight(56)
+        start_btn.setCursor(Qt.PointingHandCursor)
+
         start_btn.clicked.connect(self.start_workout) 
         layout.addWidget(start_btn)
         
@@ -381,7 +388,7 @@ class MainWindow(QMainWindow):
     def start_pullups(self):
         self.total_session()
         from pullup import process_frame, reset
-        from score import WorkoutScreen
+        from pullupscore import WorkoutScreen
         reset()
         self.workout_win = WorkoutScreen(exercise_name="Pull Ups", menu_ref=self)  
         self.workout_win.setWindowFlag(Qt.FramelessWindowHint)
