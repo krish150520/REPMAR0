@@ -475,7 +475,7 @@ class WorkoutScreen(QWidget):
         print(today)
         aajdidateehegioye=str(today)
         with open(DATE_FILE,"a") as aajdidateoye:
-            aajdidateoye.write(f"\n{aajdidateehegioye}")
+            aajdidateoye.write(f"{aajdidateehegioye}\n")
     # def go_back_to_menu(self):
     #    from menur import MainWindow
     #    self.menu = MainWindow()
